@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <title>Proposta</title>
+
+    <style>
+      body {
+        background-color: #0f2644;
+        color: white;
+        font-family: "Montserrat";
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin-left: 5;
+        padding: 0;
+        position: relative;
+      }
+
+      .logo {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        width: 50px;
+      }
+
+      .conteudo-central {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100;
+        text-align: center;
+        padding: 20px;
+      }
+
+      #texto {
+        font-size: 4em;
+        font-weight: bold;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img src="LOGO_jascc-removebg-preview.png" alt="jascc logo" class="logo" />
+    <div class="conteudo-central">
+      <div id="texto"></div>
+    </div>
+
+    <script>
+      const textos = ["A PROPOSTA É...", "25% POR R$ 800.000,00"];
+
+      const elemento = document.getElementById("texto");
+      let iTexto = 0;
+      let iLetra = 0;
+
+      function digitar() {
+        if (iLetra < textos[iTexto].length) {
+          elemento.textContent += textos[iTexto].charAt(iLetra);
+          iLetra++;
+          setTimeout(digitar, 100);
+        } else {
+          iTexto++;
+          if (iTexto < textos.length) {
+            setTimeout(() => {
+              elemento.textContent = "";
+              iLetra = 0;
+              digitar();
+            }, 2000); // espera 2 segundos antes de mostrar o próximo texto
+          }
+        }
+      }
+
+      digitar();
+    </script>
+  </body>
+</html>
